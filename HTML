@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+ <!-- Name: Tamera August  
+    File: homework1.html
+    Date Created: 2025-09-22
+    Date Updated: 2025-11-14
+    Purpose: Homework 2 Patient Registration Form with updated variables
+-->
+<html>
+    <head>
+        <meta charset="utf-8">
+
+
+        <title>Saad Hospital Registration Form</title>
+
+
+<link rel="stylesheet" href="homework2.css">
+
+
+    </head>
+    <body>
+        <div class="form-container">
+
+
+            <!--The Header-->
+            <div class="header">
+                <table width="100%">
+                    <tr>
+                        <td>
+                            <img class="logo"
+                                 src="pharm.png"
+                                 alt="Hospital Logo"
+                                 height="60px"
+                                 width="50px">
+                        </td>
+                        <td class="title" valign="top" align="center">
+                            SAAD PATIENT REGISTRATION FORM
+                        </td>
+                        <td valign="bottom" align="right">
+                            Today's date: <span class="today"></span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+        <hr>
+
+
+        <div id="body">
+
+
+<!-- FIXED: thank-you page link must match correct filename -->
+<form name="signup" id="signup" onreset="removedata1()" action="homework2-thanks.html">
+
+
+   <table class="form">
+
+
+    <tr class="form">
+        <th class="form" colspan="4">Pateint Information</th>
+    </tr>
+
+
+    <tr class="form">
+        <td align="right">
+            <label for="first"> Name</label>
+        </td>
+
+
+        <td>
+            <input type="text"
+                   size="25"
+                   maxlength="30"
+                   id="firstname"
+                   class="firstname"
+                   name="firstname"
+                   required
+                   pattern="[A-Za-z-' ]{2,}"
+                   oninvalid="this.setCustomValidity('First Name not valid.')"
+                   onblur="checkfirstname()"
+                   oninput="this.setCustomValidity('')"
+                   placeholder="First"
+                   title="Input required; only letters and spaces allowed.">
+
+
+            <input type="text"
+                   size="1"
+                   maxlength="1"
+                   id="middleinit"
+                   name="middleinit"
+                   placeholder="M"
+                   required
+                   pattern="[A-Za-z]{1}"
+                   oninvalid="this.setCustomValidity('Middle Initial not valid.')"
+                   onblur="checkmiddlename()"
+                   oninput="this.setCustomValidity('')">
+
+
+            <input type="text"
+                   size="20"
+                   maxlength="30"
+                   id="lastname"
+                   name="lastname"
+                   required
+                   pattern="[A-Za-z-' ]{2,}"
+                   oninvalid="this.setCustomValidity('Last Name not valid.')"
+                   onblur="checklastname()"
+                   oninput="this.setCustomValidity('')"
+                   placeholder="Last">
+
+
+        </td>
+    </tr>
+
+
+    <tr class="form">
+        <td align="right">
+            <label for="email">Email Address</label>
+        </td>
+
+
+        <td>
+            <!-- FIXED: missing correct type attribute -->
+            <input type="email"
+                   size="25"
+                   maxlength="30"
+                   id="email"
+                   class="email"
+                   name="email"
+                   placeholder="johndoe@gmail.com"
+                   required
+                   oninvalid="this.setCustomValidity('Email Address not valid.')"
+                   oninput="this.setCustomValidity('')">
+        </td>
+    </tr>
+
+
+    <!-- gender dob, and other stuff lol  -->
+    <tr class="form">
+        <td align="right">
+            <label for="gender">Gender</label>
+        </td>
+
+
+        <td>
+            <!-- FIXED: all radios MUST share the same name -->
+            <input type="radio" class="Gender" name="gender" value="Female">
+            <label>Female</label>
+
+
+            <input type="radio" class="Gender" name="gender" value="Male">
+            <label>Male</label>
+
+
+            <input type="radio" class="Gender" name="gender" value="Other">
+            <label>Other</label>
+
+
+            <input type="radio" class="Gender" name="gender" value="Prefer Not To Answer">
+            <label>Prefer Not To Answer</label>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td><label for="dob">Date of Birth:</label></td>
+        <td>
+            <input type="date" required id="dob" name="dob">
+        </td>
+    </tr>
+
+
+    <tr>
+        <td><label for="ssn">SSN:</label></td>
+        <td>
+            <input type="password"
+                   id="ssn"
+                   size="10"
+                   maxlength="11"
+                   required
+                   placeholder="123-45-6789">
+        </td>
+    </tr>
+
+
+    <!-- cty, text, -->
+    <tr class="form">
+        <td align="right"><label for="addr1">Address Line 1</label></td>
+        <td>
+            <input type="text"
+                   size="20"
+                   minlength="4"
+                   maxlength="30"
+                   id="addr1"
+                   name="addr1"
+                   required
+                   oninvalid="this.setCustomValidity('Address line 1 Required')"
+                   oninput="this.setCustomValidity('')"
+                   placeholder="required">
+        </td>
+    </tr>
+
+
+    <tr class="form">
+        <td align="right"><label for="addr2">Address Line 2</label></td>
+        <td>
+            <!-- FIXED: duplicate ID removed -->
+            <input type="text"
+                   size="20"
+                   maxlength="30"
+                   id="addr2"
+                   name="addr2">
+        </td>
+    </tr>
+
+
+    <tr class="form">
+        <td align="right">
+            <label for="city">City,</label>
+            <label for="state">State,</label>
+            <label for="zip">Zip</label>
+        </td>
+
+
+        <td>
+            <input type="text"
+                   size="10"
+                   maxlength="25"
+                   id="city"
+                   name="city"
+                   required
+                   placeholder="required">
+
+
+            <select id="state" name="state" required>
+                <option value=""></option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <option value="AZ">Arizona</option>
+                <option value="AR">Arkansas</option>
+                <option value="CA">California</option>
+                <option value="CO">Colorado</option>
+                <option value="CT">Connecticut</option>
+                <option value="DE">Delaware</option>
+                <option value="DC">District Of Columbia</option>
+                <option value="FL">Florida</option>
+                <option value="GA">Georgia</option>
+                <option value="HI">Hawaii</option>
+                <option value="ID">Idaho</option>
+                <option value="IL">Illinois</option>
+                <option value="IN">Indiana</option>
+                <option value="IA">Iowa</option>
+                <option value="KS">Kansas</option>
+                <option value="KY">Kentucky</option>
+                <option value="LA">Louisiana</option>
+                <option value="ME">Maine</option>
+                <option value="MD">Maryland</option>
+                <option value="MA">Massachusetts</option>
+                <option value="MI">Michigan</option>
+                <option value="MN">Minnesota</option>
+                <option value="MS">Mississippi</option>
+                <option value="MO">Missouri</option>
+                <option value="MT">Montana</option>
+                <option value="NE">Nebraska</option>
+                <option value="NV">Nevada</option>
+                <option value="NH">New Hampshire</option>
+                <option value="NJ">New Jersey</option>
+                <option value="NM">New Mexico</option>
+                <option value="NY">New York</option>
+                <option value="NC">North Carolina</option>
+                <option value="ND">North Dakota</option>
+                <option value="OH">Ohio</option>
+                <option value="OK">Oklahoma</option>
+                <option value="OR">Oregon</option>
+                <option value="PA">Pennsylvania</option>
+                <option value="RI">Rhode Island</option>
+                <option value="SC">South Carolina</option>
+                <option value="SD">South Dakota</option>
+                <option value="TN">Tennessee</option>
+                <option value="TX">Texas</option>
+                <option value="UT">Utah</option>
+                <option value="VT">Vermont</option>
+                <option value="VA">Virginia</option>
+                <option value="WA">Washington</option>
+                <option value="WV">West Virginia</option>
+                <option value="WI">Wisconsin</option>
+                <option value="WY">Wyoming</option>
+            </select>
+
+
+            <input type="text"
+                   size="5"
+                   maxlength="7"
+                   id="zip"
+                   name="zip"
+                   required
+                   placeholder="required">
+        </td>
+    </tr>
+
+
+    <!-- Phones -->
+    <tr class="form">
+        <td align="right"><label for="phone">Phone #</label></td>
+        <td>
+            <input type="text"
+                   size="13"
+                   maxlength="13"
+                   id="phone"
+                   name="phone"
+                   placeholder="(123) 456-789"
+                   required>
+        </td>
+    </tr>
+
+
+    <tr class="form">
+        <td align="right"><label for="work">Work #</label></td>
+        <td>
+            <input type="text"
+                   size="13"
+                   maxlength="13"
+                   id="work"
+                   name="work"
+                   placeholder="(123) 456-789">
+        </td>
+    </tr>
+
+
+    <!-- why u sick and what u have -->
+    <tr>
+        <td><label for="notes">Reason For Visit:</label></td>
+        <td>
+            <textarea id="notes"
+                      name="notes"
+                      rows="5"
+                      cols="75"
+                      placeholder="Please describe reason for visit or any concerns here..."></textarea>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td><label for="survey">Symptoms Include:</label></td>
+        <td>
+            <input type="checkbox" id="option1" value="Headache"> Headache
+            <input type="checkbox" id="option2" value="Stomachache"> Stomachache
+            <input type="checkbox" id="option3" value="Chills"> Chills
+            <input type="checkbox" id="option4" value="Diarrhea"> Diarrhea
+            <input type="checkbox" id="option5" value="Fever"> Fever
+        </td>
+    </tr>
+
+
+    <tr>
+        <td class="td1"><label for="range">Use Scale to Rate Pain From 1 to 10:</label></td>
+        <td>
+            <!-- FIXED: id cannot contain spaces -->
+            <input type="range"
+                   name="painscale"
+                   id="painrange"
+                   min="1"
+                   max="10"
+                   value="1"
+                   list="increments">
+
+
+            <span id="range"></span>
+
+
+            <datalist id="increments">
+                <option value="1"></option>
+                <option value="2"></option>
+                <option value="3"></option>
+                <option value="4"></option>
+                <option value="5"></option>
+                <option value="6"></option>
+                <option value="7"></option>
+                <option value="8"></option>
+                <option value="9"></option>
+                <option value="10"></option>
+            </datalist>
+        </td>
+    </tr>
+
+
+<script>
+   var slider = document.getElementById("painrange");
+   var output = document.getElementById("range");
+   output.innerHTML = slider.value;
+
+
+   slider.oninput = function() {
+       output.innerHTML = this.value;
+   }
+</script>
+
+
+<tr>
+    <td class="un"><label for="uid">Username:</label></td>
+    <td>
+        <input type="text"
+               name="un"
+               id="un"
+               maxlength="30"
+               required
+               placeholder="User ID"
+               oninvalid="this.setCustomValidity('Invalid User ID. No special characters.')"
+               oninput="this.setCustomValidity('')">
+    </td>
+</tr>
+
+
+<tr>
+    <td><label for="password">Password:</label></td>
+    <td>
+        <input type="password"
+               name="pass"
+               id="pass"
+               minlength="10"
+               required
+               placeholder="required"
+               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+    </td>
+</tr>
+
+
+<tr>
+    <td><label for="password2">Re-type Password:</label></td>
+    <td>
+        <!-- FIXED: type="password2" is not real -->
+        <input type="password"
+               name="pass2"
+               id="pass2"
+               minlength="10"
+               required
+               placeholder="required">
+    </td>
+</tr>
+
+
+<tr>
+    <td colspan="3">
+        <center>
+<input type="submit" value="Submit">
+<input type="reset" value="Clear">
+        </center>
+    </td>
+</tr>
+
+
+   </table>
+
+
+</form>
+
+
+</div>
+
+
+<p id="outputformdata"></p>
+
+
+<footer>
+    <p><a href="contact.html">Contact Us!</a></p>
+    <script src="homework2.js"></script>
+</footer>
+
+
+<script>
+document.querySelector(".today").innerHTML = new Date().toLocaleDateString();
+</script>
+
+
+</body>
+</html>
+
+
+
+
